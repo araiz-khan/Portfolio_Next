@@ -66,13 +66,15 @@ export default function HeroSection() {
                 scaleOnHover={1.05}
                 className="bg-card"
             >
-                <Image
-                    src="https://picsum.photos/seed/hero/600/600"
-                    alt="Abstract hero image"
-                    fill
-                    className="object-cover"
-                    data-ai-hint="abstract design"
-                />
+                <div className="relative w-full h-full rounded-3xl overflow-hidden">
+                    <Image
+                        src="https://picsum.photos/seed/hero/600/600"
+                        alt="Abstract hero image"
+                        fill
+                        className="object-cover"
+                        data-ai-hint="abstract design"
+                    />
+                </div>
             </TiltedCard>
           </div>
         </div>
