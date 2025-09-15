@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 z-0">
              <Threads
                 color={threadColor}
-                amplitude={0.5}
+                amplitude={1}
                 distance={0}
                 enableMouseInteraction={false}
             />
