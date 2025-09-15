@@ -64,36 +64,48 @@ export const bentoCardData: BentoCardData[] = [
     color: '#060010',
     title: 'E-commerce Platform',
     description: 'A full-stack e-commerce solution.',
-    label: 'Next.js'
+    label: 'Next.js',
+    imageUrl: 'https://picsum.photos/seed/p1/600/400',
+    imageHint: 'online store'
   },
   {
     color: '#060010',
     title: 'Task Management App',
     description: 'A collaborative task management app.',
-    label: 'React'
+    label: 'React',
+    imageUrl: 'https://picsum.photos/seed/p2/600/400',
+    imageHint: 'kanban board'
   },
   {
     color: '#060010',
     title: 'Portfolio Website Builder',
     description: 'A dynamic portfolio builder.',
-    label: 'Next.js'
+    label: 'Next.js',
+    imageUrl: 'https://picsum.photos/seed/p3/600/400',
+    imageHint: 'website builder'
   },
   {
     color: '#060010',
     title: 'Data Analytics Dashboard',
     description: 'Visualize your key business metrics.',
-    label: 'Analytics'
+    label: 'Analytics',
+    imageUrl: 'https://picsum.photos/seed/p4/600/400',
+    imageHint: 'dashboard analytics'
   },
   {
     color: '#060010',
     title: 'AI Content Generator',
     description: 'Leverage AI to create content.',
-    label: 'GenAI'
+    label: 'GenAI',
+    imageUrl: 'https://picsum.photos/seed/p5/600/400',
+    imageHint: 'artificial intelligence'
   },
   {
     color: '#060010',
     title: 'Cloud Deployment',
     description: 'Secure and scalable cloud solutions.',
-    label: 'DevOps'
+    label: 'DevOps',
+    imageUrl: 'https://picsum.photos/seed/p6/600/400',
+    imageHint: 'cloud infrastructure'
   }
 ];

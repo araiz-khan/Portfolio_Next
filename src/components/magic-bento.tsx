@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
 import './magic-bento.css';
 import { BentoCardData } from '@/lib/types';
+import Image from 'next/image';
 
 
 export interface BentoProps {
@@ -510,6 +511,30 @@ const MagicBento: React.FC<BentoProps> = ({
             } as React.CSSProperties
           };
 
+          const CardContent = (
+            <>
+               {card.imageUrl && (
+                <>
+                  <Image
+                    src={card.imageUrl}
+                    alt={card.title || 'Project image'}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    data-ai-hint={card.imageHint}
+                  />
+                  <div className="absolute inset-0 bg-black/50" />
+                </>
+              )}
+              <div className="card__header">
+                <div className="card__label">{card.label}</div>
+              </div>
+              <div className="card__content">
+                <h2 className="card__title">{card.title}</h2>
+                <p className="card__description">{card.description}</p>
+              </div>
+            </>
+          );
+
           if (enableStars) {
             return (
               <ParticleCard
@@ -522,13 +547,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
               >
-                <div className="card__header">
-                  <div className="card__label">{card.label}</div>
-                </div>
-                <div className="card__content">
-                  <h2 className="card__title">{card.title}</h2>
-                  <p className="card__description">{card.description}</p>
-                </div>
+                {CardContent}
               </ParticleCard>
             );
           }
@@ -645,13 +664,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 el.addEventListener('click', handleClick);
               }}
             >
-              <div className="card__header">
-                <div className="card__label">{card.label}</div>
-              </div>
-              <div className="card__content">
-                <h2 className="card__title">{card.title}</h2>
-                <p className="card__description">{card.description}</p>
-              </div>
+              {CardContent}
             </div>
           );
         })}

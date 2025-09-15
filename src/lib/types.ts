@@ -21,6 +21,8 @@ export interface BentoCardData {
   title?: string;
   description?: string;
   label?: string;
+  imageUrl?: string;
+  imageHint?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
 }
