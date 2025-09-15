@@ -3,9 +3,12 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Threads from '../threads';
+import { useTheme } from 'next-themes';
 
 export default function HeroSection() {
+  const { theme } = useTheme();
+
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const aboutSection = document.getElementById('about');
@@ -14,15 +17,18 @@ export default function HeroSection() {
     }
   };
 
+  // Primary color for dark theme (light threads) and dark color for light theme (dark threads)
+  const threadColor = theme === 'dark' ? [0.9, 0.9, 0.9] : [0.1, 0.1, 0.1];
+
+
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-background transition-colors duration-300">
-        <div className="absolute inset-0 z-0 md:hidden">
-            <Image
-            src="https://picsum.photos/seed/hero-modern/600/800"
-            alt="Background"
-            fill
-            className="object-cover opacity-10"
-            data-ai-hint="abstract geometric"
+        <div className="absolute inset-0 z-0">
+             <Threads
+                color={threadColor}
+                amplitude={1}
+                distance={0}
+                enableMouseInteraction={true}
             />
         </div>
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
@@ -51,20 +57,7 @@ export default function HeroSection() {
               </Button>
             </div>
           </div>
-          <div
-            className="hidden h-full w-full items-center justify-center md:flex"
-          >
-            <div className="relative h-full w-full max-h-[500px] max-w-[500px]">
-                 <Image
-                    src="https://picsum.photos/seed/hero-modern/600/600"
-                    alt="Hero Image"
-                    fill
-                    className="rounded-lg object-cover"
-                    data-ai-hint="abstract geometric"
-                    priority
-                />
-            </div>
-          </div>
+          
         </div>
       </div>
       <Link
