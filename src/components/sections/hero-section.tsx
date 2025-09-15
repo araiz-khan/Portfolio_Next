@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import TextType from '../TextType';
+import TiltedCard from '../TiltedCard';
+import Image from 'next/image';
+import { Card } from '../ui/card';
 
 export default function HeroSection() {
 
@@ -54,7 +57,24 @@ export default function HeroSection() {
               </Button>
             </div>
           </div>
-          
+          <div className="hidden items-center justify-center md:flex">
+            <TiltedCard
+                containerHeight="400px"
+                cardHeight="400px"
+                cardWidth="400px"
+                showTooltip={false}
+                scaleOnHover={1.05}
+                className="bg-card"
+            >
+                <Image
+                    src="https://picsum.photos/seed/hero/600/600"
+                    alt="Abstract hero image"
+                    fill
+                    className="object-cover"
+                    data-ai-hint="abstract design"
+                />
+            </TiltedCard>
+          </div>
         </div>
       </div>
       <Link
