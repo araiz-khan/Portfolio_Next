@@ -1,17 +1,11 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card';
 import { services } from '@/lib/data';
 import type { Icon as LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
+import TiltedCard from '../TiltedCard';
 
 // A map to dynamically render icons
 import { LayoutTemplate, Smartphone, Code, Rocket } from 'lucide-react';
+
 const iconMap: { [key: string]: LucideIcon } = {
   LayoutTemplate,
   Smartphone,
@@ -25,6 +19,13 @@ const iconColors = [
   'text-chart-3',
   'text-chart-4',
 ];
+
+const cardColors = [
+    'bg-card',
+    'bg-card',
+    'bg-card',
+    'bg-card',
+]
 
 export default function ServicesSection() {
   return (
@@ -44,15 +45,20 @@ export default function ServicesSection() {
                 className="fade-in-up"
                 style={{ animationDelay: `${i * 150}ms` }}
               >
-                <Card className="transform text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/20 h-full">
-                  <CardHeader className="items-center">
-                    {Icon && <Icon className={cn('h-12 w-12', iconColors[i % iconColors.length])} />}
-                    <CardTitle className="mt-4 text-2xl">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                <TiltedCard 
+                    containerHeight='100%'
+                    cardHeight='100%'
+                    cardWidth='100%'
+                    captionText={service.title}
+                    className={cn('p-6 text-center h-full', cardColors[i % cardColors.length])}
+                    scaleOnHover={1.05}
+                >
+                  <div className="flex flex-col items-center justify-center text-center h-full">
+                    {Icon && <Icon className={cn('h-12 w-12 mb-4', iconColors[i % iconColors.length])} />}
+                    <h3 className="text-2xl font-headline mt-4 mb-2">{service.title}</h3>
                     <p className="text-muted-foreground">{service.description}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </TiltedCard>
               </div>
             );
           })}
