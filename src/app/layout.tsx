@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Inter, Lora } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { ClientAnimatedCursor } from '@/components/animated-cursor';
 
 const fontInter = Inter({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
             attribute="class"
             defaultTheme="dark"
         >
+          <ClientAnimatedCursor />
           {children}
         </ThemeProvider>
         <Toaster />
