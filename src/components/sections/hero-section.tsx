@@ -20,6 +20,17 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-background transition-colors duration-300">
+       <div className="absolute inset-0 md:hidden">
+        <Image
+          src="https://picsum.photos/seed/hero/600/800"
+          alt="Abstract hero background"
+          fill
+          className="object-cover"
+          data-ai-hint="abstract design"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid min-h-[calc(100vh-4rem)] items-center gap-12 md:grid-cols-2 md:gap-16">
           <div className="flex flex-col justify-center space-y-6">
