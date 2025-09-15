@@ -6,6 +6,9 @@ import './magic-bento.css';
 import { BentoCardData } from '@/lib/types';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Github } from 'lucide-react';
+import Link from 'next/link';
 
 
 export interface BentoProps {
@@ -540,6 +543,22 @@ const MagicBento: React.FC<BentoProps> = ({
               <div className="card__content">
                 <h2 className="card__title">{card.title}</h2>
                 <p className="card__description">{card.description}</p>
+                <div className="card__buttons mt-4 flex gap-2">
+                  {card.liveUrl && (
+                    <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10 hover:text-white">
+                      <Link href={card.liveUrl} target="_blank" onClick={(e) => e.stopPropagation()}>
+                        <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+                      </Link>
+                    </Button>
+                  )}
+                  {card.githubUrl && (
+                    <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10 hover:text-white">
+                      <Link href={card.githubUrl} target="_blank" onClick={(e) => e.stopPropagation()}>
+                        <Github className="mr-2 h-4 w-4" /> Source
+                      </Link>
+                    </Button>
+                  )}
+                </div>
               </div>
             </>
           );

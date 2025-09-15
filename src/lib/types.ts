@@ -25,4 +25,6 @@ export interface BentoCardData {
   imageHint?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
+  liveUrl?: string;
+  githubUrl?: string;
 }

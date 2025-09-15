@@ -16,6 +16,9 @@
   transition: transform 0.3s ease-out;
   color: white;
   aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card--border-glow {
@@ -70,6 +73,7 @@
   font-size: 0.875rem;
   opacity: 0.8;
   line-height: 1.5;
+  flex-grow: 1;
 }
 
 .card--text-autohide .card__content {
@@ -85,4 +89,10 @@
 
 .particle-container {
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 }
