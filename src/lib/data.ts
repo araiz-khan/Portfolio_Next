@@ -1,4 +1,4 @@
-import type { Project, Service } from './types';
+import type { Project, Service, BentoCardData } from './types';
 
 export const services: Service[] = [
   {
@@ -57,4 +57,43 @@ export const projects: Project[] = [
     githubUrl: '#',
     industry: 'Creative Technology',
   },
+];
+
+export const bentoCardData: BentoCardData[] = [
+  {
+    color: '#060010',
+    title: 'E-commerce Platform',
+    description: 'A full-stack e-commerce solution.',
+    label: 'Next.js'
+  },
+  {
+    color: '#060010',
+    title: 'Task Management App',
+    description: 'A collaborative task management app.',
+    label: 'React'
+  },
+  {
+    color: '#060010',
+    title: 'Portfolio Website Builder',
+    description: 'A dynamic portfolio builder.',
+    label: 'Next.js'
+  },
+  {
+    color: '#060010',
+    title: 'Data Analytics Dashboard',
+    description: 'Visualize your key business metrics.',
+    label: 'Analytics'
+  },
+  {
+    color: '#060010',
+    title: 'AI Content Generator',
+    description: 'Leverage AI to create content.',
+    label: 'GenAI'
+  },
+  {
+    color: '#060010',
+    title: 'Cloud Deployment',
+    description: 'Secure and scalable cloud solutions.',
+    label: 'DevOps'
+  }
 ];

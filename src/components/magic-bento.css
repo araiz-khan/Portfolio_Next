@@ -1,0 +1,109 @@
+:root {
+  --glow-color: 132, 0, 255;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+  color: white;
+}
+
+.card:nth-child(1) { grid-column: span 2; }
+.card:nth-child(4) { grid-column: span 1; }
+.card:nth-child(5) { grid-column: span 1; }
+.card:nth-child(6) { grid-column: span 1; }
+
+
+@media (max-width: 768px) {
+    .card:nth-child(1),
+    .card:nth-child(4),
+    .card:nth-child(5),
+    .card:nth-child(6) {
+        grid-column: span 1;
+    }
+}
+
+
+.card--border-glow {
+  position: relative;
+}
+
+.card--border-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+      var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(var(--glow-color, 132, 0, 255), 0.6),
+      transparent
+    )
+    no-repeat;
+  will-change: background;
+  transition: opacity 0.3s ease-out;
+  opacity: var(--glow-intensity, 0);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card__header,
+.card__content {
+  position: relative;
+  z-index: 1;
+}
+
+.card__label {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card__description {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.card--text-autohide .card__content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card--text-autohide:hover .card__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.particle-container {
+  overflow: hidden;
+}

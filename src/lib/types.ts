@@ -15,3 +15,12 @@ export type Project = {
   githubUrl?: string;
   industry: string;
 };
+
+export interface BentoCardData {
+  color?: string;
+  title?: string;
+  description?: string;
+  label?: string;
+  textAutoHide?: boolean;
+  disableAnimations?: boolean;
+}
