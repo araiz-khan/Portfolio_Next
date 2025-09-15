@@ -50,6 +50,7 @@ export default function ServicesSection() {
                     cardHeight='100%'
                     cardWidth='100%'
                     captionText={service.title}
+                    showTooltip={false}
                     className={cn('p-6 text-center h-full', cardColors[i % cardColors.length])}
                     scaleOnHover={1.05}
                 >

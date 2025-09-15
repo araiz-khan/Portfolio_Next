@@ -1,6 +1,6 @@
 'use client';
 
-import type { SpringOptions } from 'motion';
+import type { SpringOptions } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import './TiltedCard.css';
@@ -24,9 +24,9 @@ interface TiltedCardProps {
 }
 
 const springValues: SpringOptions = {
-  damping: 30,
-  stiffness: 100,
-  mass: 2
+  damping: 35,
+  stiffness: 200,
+  mass: 1
 };
 
 export default function TiltedCard({
