@@ -30,8 +30,7 @@ export default function RootLayout({
       <body className={cn('font-body antialiased', fontInter.variable, fontLora.variable)}>
         <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="dark"
         >
           {children}
         </ThemeProvider>
