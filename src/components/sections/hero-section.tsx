@@ -28,7 +28,7 @@ export default function HeroSection() {
                 color={threadColor}
                 amplitude={1}
                 distance={0}
-                enableMouseInteraction={true}
+                enableMouseInteraction={false}
             />
         </div>
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
