@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import TextType from '../TextType';
 
 export default function HeroSection() {
 
@@ -21,9 +22,20 @@ export default function HeroSection() {
           <div className="flex flex-col justify-center space-y-6">
             <div className="space-y-4">
               <p className="font-body text-lg font-semibold text-primary/80">Hi, I'm Araiz Khan</p>
-              <h1 className="text-4xl font-bold tracking-tighter !leading-tight sm:text-5xl md:text-6xl xl:text-7xl">
-                I Build Modern Web Experiences
-              </h1>
+              <TextType
+                as="h1"
+                text={[
+                  "I Build Modern Web Experiences",
+                  "I Engineer Scalable Solutions",
+                  "I Create Beautiful Interfaces",
+                  "I Solve Complex Problems"
+                ]}
+                className="text-4xl font-bold tracking-tighter !leading-tight sm:text-5xl md:text-6xl xl:text-7xl"
+                typingSpeed={50}
+                deletingSpeed={25}
+                pauseDuration={2000}
+                loop={true}
+              />
               <p className="max-w-xl text-muted-foreground md:text-xl">
                 As a dedicated software developer, I specialize in crafting elegant, high-performance web solutions that deliver exceptional user experiences. I transform complex challenges into intuitive and efficient applications that not only meet but exceed user expectations.
               </p>
