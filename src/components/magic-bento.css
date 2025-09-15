@@ -4,14 +4,8 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .card {
@@ -21,23 +15,8 @@
   overflow: hidden;
   transition: transform 0.3s ease-out;
   color: white;
+  aspect-ratio: 1 / 1;
 }
-
-.card:nth-child(1) { grid-column: span 2; }
-.card:nth-child(4) { grid-column: span 1; }
-.card:nth-child(5) { grid-column: span 1; }
-.card:nth-child(6) { grid-column: span 1; }
-
-
-@media (max-width: 768px) {
-    .card:nth-child(1),
-    .card:nth-child(4),
-    .card:nth-child(5),
-    .card:nth-child(6) {
-        grid-column: span 1;
-    }
-}
-
 
 .card--border-glow {
   position: relative;
