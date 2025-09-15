@@ -502,7 +502,7 @@ const MagicBento: React.FC<BentoProps> = ({
 
       <BentoCardGrid gridRef={gridRef}>
         {cardData.map((card, index) => {
-          const baseClassName = `card ${textAutoHide ? 'card--text-autohide' : ''} ${enableBorderGlow ? 'card--border-glow' : ''}`;
+          const baseClassName = `card group ${textAutoHide ? 'card--text-autohide' : ''} ${enableBorderGlow ? 'card--border-glow' : ''}`;
           const cardProps = {
             className: baseClassName,
             style: {
@@ -519,10 +519,10 @@ const MagicBento: React.FC<BentoProps> = ({
                     src={card.imageUrl}
                     alt={card.title || 'Project image'}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     data-ai-hint={card.imageHint}
                   />
-                  <div className="absolute inset-0 bg-black/50" />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </>
               )}
               <div className="card__header">
