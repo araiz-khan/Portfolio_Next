@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="w-full py-20 md:py-32">
+    <section id="contact" className="w-full bg-secondary py-20 md:py-32 transition-colors duration-300">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid gap-12 md:grid-cols-2">
           <div className="space-y-8">
