@@ -3,11 +3,8 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
-import Threads from '../threads';
-import { useTheme } from 'next-themes';
 
 export default function HeroSection() {
-  const { theme } = useTheme();
 
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -17,20 +14,8 @@ export default function HeroSection() {
     }
   };
 
-  // Primary color for dark theme (light threads) and dark color for light theme (dark threads)
-  const threadColor = theme === 'dark' ? [0.9, 0.9, 0.9] : [0.1, 0.1, 0.1];
-
-
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-background transition-colors duration-300">
-        <div className="absolute inset-0 z-0">
-             <Threads
-                color={threadColor}
-                amplitude={1}
-                distance={0}
-                enableMouseInteraction={false}
-            />
-        </div>
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid min-h-[calc(100vh-4rem)] items-center gap-12 md:grid-cols-2 md:gap-16">
           <div className="flex flex-col justify-center space-y-6">
