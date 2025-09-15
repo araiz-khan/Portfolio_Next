@@ -29,7 +29,7 @@ function StackOverflowIcon({ className }: { className?: string }) {
 
 export default function AboutSection() {
   return (
-    <section id="about" className="w-full py-20 md:py-32">
+    <section id="about" className="w-full py-20 md:py-32 bg-secondary transition-colors duration-300">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div className="flex flex-col justify-center space-y-4">
