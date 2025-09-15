@@ -1,5 +1,7 @@
 import ProjectCard from '@/components/project-card';
 import { projects } from '@/lib/data';
+import MagicBento from '../magic-bento';
+import { bentoCardData } from '@/lib/data';
 
 export default function ProjectsSection() {
   return (
@@ -13,17 +15,16 @@ export default function ProjectsSection() {
             A selection of my work.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="fade-in-up"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
+        <MagicBento 
+          cardData={bentoCardData}
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          textAutoHide={true}
+          enableTilt={true}
+          enableMagnetism={false}
+          clickEffect={true}
+        />
       </div>
     </section>
   );
