@@ -16,24 +16,17 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function HeroSection() {
   const { theme } = useTheme();
   const [particleColor, setParticleColor] = useState<string>('#ffffff');
-  const [mounted, setMounted] = useState(false);
-
+  
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-      const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
-      
-      if (theme === 'dark') {
-        setParticleColor(`hsl(${primaryColor})`);
-      } else {
-        setParticleColor(`hsl(${foregroundColor})`);
-      }
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+    const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+    
+    if (theme === 'dark') {
+      setParticleColor(`hsl(${primaryColor})`);
+    } else {
+      setParticleColor(`hsl(${foregroundColor})`);
     }
-  }, [theme, mounted]);
+  }, [theme]);
 
 
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -47,14 +40,14 @@ export default function HeroSection() {
   return (
     <section 
       id="hero" 
-      className="relative w-full h-screen overflow-hidden bg-background transition-colors duration-300"
+      className="relative w-full min-h-[calc(100vh-4rem)] overflow-hidden bg-background transition-colors duration-300 flex flex-col justify-center"
     >
       <ParticleBackground
         particleColor={particleColor}
         className="absolute inset-0 z-0 h-full w-full"
       />
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
-        <div className="grid min-h-screen items-center gap-12 md:grid-cols-1">
+        <div className="grid items-center gap-12 md:grid-cols-1">
           <div className="flex flex-col justify-center space-y-6 text-center">
             <div className="space-y-4">
               <p className="font-body text-lg font-semibold text-primary/80">Hi, I'm Araiz Khan</p>
