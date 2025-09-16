@@ -72,7 +72,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   }, [particles]);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !isLoaded) return;
     
     // Use a short timeout to ensure CSS variables have been applied after theme change
     const timeoutId = setTimeout(() => {
