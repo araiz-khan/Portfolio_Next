@@ -74,16 +74,23 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   useEffect(() => {
     if (!containerRef.current) return;
     
-    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-    const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
-    const newColor = theme === 'dark' ? `hsl(${primaryColor})` : `hsl(${foregroundColor})`;
-    
-    gsap.to('.particle', { 
-      backgroundColor: newColor, 
-      boxShadow: `0 0 10px ${newColor}, 0 0 15px ${newColor}`,
-      duration: 0.5 
-    });
-  }, [theme]);
+    // Use a short timeout to ensure CSS variables have been applied after theme change
+    const timeoutId = setTimeout(() => {
+      const computedStyle = getComputedStyle(document.documentElement);
+      const primaryColor = computedStyle.getPropertyValue('--primary').trim();
+      const foregroundColor = computedStyle.getPropertyValue('--foreground').trim();
+      const newColor = theme === 'dark' ? `hsl(${primaryColor})` : `hsl(${foregroundColor})`;
+      
+      gsap.to('.particle', { 
+        backgroundColor: newColor, 
+        boxShadow: `0 0 10px ${newColor}, 0 0 15px ${newColor}`,
+        duration: 0.5 
+      });
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
+
+  }, [theme, isLoaded]);
 
   return (
     <div
