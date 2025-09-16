@@ -47,10 +47,7 @@ export default function HeroSection() {
   return (
     <section 
       id="hero" 
-      className="relative w-full h-screen overflow-hidden transition-colors duration-300"
-      style={{
-        background: 'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)'
-      }}
+      className="relative w-full h-screen overflow-hidden bg-background transition-colors duration-300"
     >
       <ParticleBackground
         particleColor={particleColor}
