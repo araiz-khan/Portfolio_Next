@@ -5,6 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { AKIcon } from './ak-icon';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 function StackOverflowIcon({ className }: { className?: string }) {
   return (
@@ -32,7 +36,7 @@ export default function Footer() {
 
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    gsap.to(window, { scrollTo: 0, duration: 1, ease: 'power2.inOut' });
   };
 
   return (

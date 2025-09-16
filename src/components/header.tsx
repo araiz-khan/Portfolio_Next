@@ -8,6 +8,10 @@ import { Menu, User, Mail, FolderGit, Wrench } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AKIcon } from './ak-icon';
 import { ThemeToggle } from './theme-toggle';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const navItems = [
   { href: '#about', label: 'About', icon: User },
@@ -37,11 +41,11 @@ export default function Header() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     if (targetId === '#top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      gsap.to(window, { scrollTo: 0, duration: 1, ease: 'power2.inOut' });
     } else {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          gsap.to(window, { scrollTo: targetElement, duration: 1, ease: 'power2.inOut' });
       }
     }
     closeMobileMenu();

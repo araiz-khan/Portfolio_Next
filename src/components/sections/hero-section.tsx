@@ -7,6 +7,11 @@ import TextType from '../TextType';
 import Threads from '../threads';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 
 export default function HeroSection() {
   const { theme } = useTheme();
@@ -31,7 +36,7 @@ export default function HeroSection() {
     e.preventDefault();
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      gsap.to(window, { scrollTo: aboutSection, duration: 1, ease: 'power2.inOut' });
     }
   };
 
