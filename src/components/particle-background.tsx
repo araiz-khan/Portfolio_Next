@@ -24,6 +24,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const finalParticleCount = isMobile ? Math.floor(particleCount / 2) : particleCount;
 
@@ -42,7 +43,9 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
   useEffect(() => {
     if (particles.length > 0 && containerRef.current) {
+      setIsLoaded(true);
       const particleElements = containerRef.current.children;
+      gsap.to(containerRef.current, { opacity: 1, duration: 1, delay: 0.5 });
       gsap.to(particleElements, { opacity: 1, duration: 1, stagger: 0.02 });
 
       particles.forEach((particle, i) => {
@@ -82,7 +85,14 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   }, [particles]);
 
   return (
-    <div ref={containerRef} className={cn('particle-background', className)}>
+    <div
+      ref={containerRef}
+      className={cn(
+        'particle-background',
+        isLoaded && 'particle-background--loaded',
+        className
+      )}
+    >
       {particles.map((p) => (
         <div
           key={p.id}
