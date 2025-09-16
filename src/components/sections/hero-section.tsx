@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import TextType from '../TextType';
-import Threads from '../threads';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import ParticleBackground from '../particle-background';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function HeroSection() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [threadsColor, setThreadsColor] = useState<[number, number, number]>([0.5, 0.5, 0.5]);
+  const [particleColor, setParticleColor] = useState<string>('#888888');
 
   useEffect(() => {
     setMounted(true);
@@ -24,13 +24,18 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (mounted) {
+      // Using CSS variables to fetch theme colors
+      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+      const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+      
       if (theme === 'dark') {
-        setThreadsColor([0.8, 0.9, 1.0]); // more brighter vibrant blue for dark mode
+         setParticleColor(`hsl(${primaryColor})`);
       } else {
-        setThreadsColor([0.5, 0.5, 0.5]); // Muted gray for light mode
+        setParticleColor(`hsl(${foregroundColor})`);
       }
     }
   }, [theme, mounted]);
+
 
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -43,12 +48,9 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-background transition-colors duration-300">
        {mounted && (
-        <Threads
-          color={threadsColor}
-          amplitude={1.5}
-          distance={0.3}
-          enableMouseInteraction={true}
-          className="absolute inset-0 z-0 h-full w-full opacity-40 dark:opacity-30"
+        <ParticleBackground
+          particleColor={particleColor}
+          className="absolute inset-0 z-0 h-full w-full"
         />
       )}
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
