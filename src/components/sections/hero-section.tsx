@@ -15,26 +15,20 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function HeroSection() {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [particleColor, setParticleColor] = useState<string>('#888888');
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      // Using CSS variables to fetch theme colors
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-      const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
-      
-      if (theme === 'dark') {
-         setParticleColor(`hsl(${primaryColor})`);
-      } else {
-        setParticleColor(`hsl(${foregroundColor})`);
-      }
+    // Using CSS variables to fetch theme colors
+    // This needs to run on the client after the theme is determined.
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+    const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+    
+    if (theme === 'dark') {
+        setParticleColor(`hsl(${primaryColor})`);
+    } else {
+      setParticleColor(`hsl(${foregroundColor})`);
     }
-  }, [theme, mounted]);
+  }, [theme]);
 
 
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -47,12 +41,10 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative w-full overflow-hidden transition-colors duration-300">
-       {mounted && (
-        <ParticleBackground
-          particleColor={particleColor}
-          className="absolute inset-0 z-0 h-full w-full"
-        />
-      )}
+      <ParticleBackground
+        particleColor={particleColor}
+        className="absolute inset-0 z-0 h-full w-full"
+      />
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid min-h-[calc(100vh-4rem)] items-center gap-12 md:grid-cols-1">
           <div className="flex flex-col justify-center space-y-6 text-center">
