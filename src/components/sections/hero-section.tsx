@@ -4,8 +4,28 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import TextType from '../TextType';
+import Threads from '../threads';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export default function HeroSection() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [threadsColor, setThreadsColor] = useState<[number, number, number]>([0.5, 0.5, 0.5]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      if (theme === 'dark') {
+        setThreadsColor([0.2, 0.4, 0.9]); // Vibrant blue for dark mode
+      } else {
+        setThreadsColor([0.5, 0.5, 0.5]); // Muted gray for light mode
+      }
+    }
+  }, [theme, mounted]);
 
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -17,9 +37,18 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-background transition-colors duration-300">
+       {mounted && (
+        <Threads
+          color={threadsColor}
+          amplitude={1.5}
+          distance={0.3}
+          enableMouseInteraction={true}
+          className="absolute inset-0 z-0 h-full w-full opacity-40 dark:opacity-30"
+        />
+      )}
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid min-h-[calc(100vh-4rem)] items-center gap-12 md:grid-cols-1">
-          <div className="flex flex-col justify-center space-y-6 text-center md:text-left">
+          <div className="flex flex-col justify-center space-y-6 text-center">
             <div className="space-y-4">
               <p className="font-body text-lg font-semibold text-primary/80">Hi, I'm Araiz Khan</p>
               <TextType
@@ -36,11 +65,11 @@ export default function HeroSection() {
                 pauseDuration={2000}
                 loop={true}
               />
-              <p className="max-w-xl text-muted-foreground md:text-xl mx-auto md:mx-0">
+              <p className="max-w-2xl mx-auto text-muted-foreground md:text-xl">
                 As a dedicated software developer, I specialize in crafting elegant, high-performance web solutions that deliver exceptional user experiences. I transform complex challenges into intuitive and efficient applications that not only meet but exceed user expectations.
               </p>
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row justify-center md:justify-start">
+            <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild size="lg">
                 <Link href="#projects">
                   View My Work
