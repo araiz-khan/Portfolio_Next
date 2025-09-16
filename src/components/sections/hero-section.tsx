@@ -46,7 +46,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-background transition-colors duration-300">
+    <section id="hero" className="relative w-full overflow-hidden transition-colors duration-300">
        {mounted && (
         <ParticleBackground
           particleColor={particleColor}
