@@ -4,8 +4,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import TextType from '../TextType';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import ParticleBackground from '../particle-background';
@@ -14,20 +12,6 @@ gsap.registerPlugin(ScrollToPlugin);
 
 
 export default function HeroSection() {
-  const { theme } = useTheme();
-  const [particleColor, setParticleColor] = useState<string>('#ffffff');
-  
-  useEffect(() => {
-    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-    const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
-    
-    if (theme === 'dark') {
-      setParticleColor(`hsl(${primaryColor})`);
-    } else {
-      setParticleColor(`hsl(${foregroundColor})`);
-    }
-  }, [theme]);
-
 
   const handleScrollToAbout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -43,7 +27,6 @@ export default function HeroSection() {
       className="relative w-full min-h-[calc(100vh-4rem)] overflow-hidden bg-background transition-colors duration-300 flex flex-col justify-center"
     >
       <ParticleBackground
-        particleColor={particleColor}
         className="absolute inset-0 z-0 h-full w-full"
       />
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">

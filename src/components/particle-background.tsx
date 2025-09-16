@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import './particle-background.css';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
 interface Particle {
   id: number;
@@ -13,22 +14,22 @@ interface Particle {
 
 interface ParticleBackgroundProps {
   particleCount?: number;
-  particleColor?: string;
   className?: string;
 }
 
 const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   particleCount = 50,
-  particleColor = '#ffffff',
   className,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const finalParticleCount = isMobile ? Math.floor(particleCount / 2) : particleCount;
+  const { theme } = useTheme();
 
   useEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const finalParticleCount = isMobile ? Math.floor(particleCount / 2) : particleCount;
+
     const newParticles: Particle[] = [];
     for (let i = 0; i < finalParticleCount; i++) {
       newParticles.push({
@@ -39,50 +40,50 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
       });
     }
     setParticles(newParticles);
-  }, [finalParticleCount]);
+  }, [particleCount]);
 
   useEffect(() => {
     if (particles.length > 0 && containerRef.current) {
       setIsLoaded(true);
       const particleElements = containerRef.current.children;
       gsap.to(containerRef.current, { opacity: 1, duration: 1, delay: 0.5 });
-      gsap.to(particleElements, { opacity: 1, duration: 1, stagger: 0.02 });
-
+      
+      const tl = gsap.timeline();
+      tl.to(particleElements, { opacity: 1, duration: 1, stagger: 0.02 });
+      
       particles.forEach((particle, i) => {
-        const pEl = particleElements[i];
+        const pEl = particleElements[i] as HTMLElement;
         if (pEl) {
           const duration = gsap.utils.random(10, 30);
           const delay = gsap.utils.random(0, 15);
           
-          const animateParticle = () => {
-            const endX = gsap.utils.random(particle.x - 5, particle.x + 5);
-            const endY = gsap.utils.random(particle.y - 5, particle.y + 5);
-            
-            gsap.to(pEl, {
-              x: `${endX}vw`,
-              y: `${endY}vh`,
-              opacity: gsap.utils.random(0.1, 0.6),
-              duration: duration,
-              delay: delay,
-              ease: 'power1.inOut',
-              repeat: -1,
-              yoyo: true,
-              onRepeat: () => {
-                gsap.to(pEl, {
-                  opacity: 0,
-                  duration: duration / 2,
-                  ease: 'power1.inOut',
-                  yoyo: true,
-                  repeat: 1
-                });
-              }
-            });
-          };
-          animateParticle();
+          tl.to(pEl, {
+            x: () => `${gsap.utils.random(particle.x - 5, particle.x + 5)}vw`,
+            y: () => `${gsap.utils.random(particle.y - 5, particle.y + 5)}vh`,
+            opacity: () => gsap.utils.random(0.1, 0.6),
+            duration: duration,
+            ease: 'power1.inOut',
+            repeat: -1,
+            yoyo: true,
+          }, delay);
         }
       });
     }
   }, [particles]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+    const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+    const newColor = theme === 'dark' ? `hsl(${primaryColor})` : `hsl(${foregroundColor})`;
+    
+    gsap.to('.particle', { 
+      backgroundColor: newColor, 
+      boxShadow: `0 0 10px ${newColor}, 0 0 15px ${newColor}`,
+      duration: 0.5 
+    });
+  }, [theme]);
 
   return (
     <div
@@ -102,8 +103,6 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
             height: `${p.size}px`,
             left: `${p.x}vw`,
             top: `${p.y}vh`,
-            backgroundColor: particleColor,
-            boxShadow: `0 0 10px ${particleColor}, 0 0 15px ${particleColor}`,
             opacity: 0,
           }}
         />
