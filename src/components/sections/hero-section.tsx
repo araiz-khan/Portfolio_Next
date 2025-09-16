@@ -20,7 +20,7 @@ export default function HeroSection() {
   useEffect(() => {
     if (mounted) {
       if (theme === 'dark') {
-        setThreadsColor([0.6, 0.7, 1.0]); // Even lighter vibrant blue for dark mode
+        setThreadsColor([0.8, 0.9, 1.0]); // more brighter vibrant blue for dark mode
       } else {
         setThreadsColor([0.5, 0.5, 0.5]); // Muted gray for light mode
       }
