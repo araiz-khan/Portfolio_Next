@@ -1,8 +1,15 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import './particle-background.css';
 import { cn } from '@/lib/utils';
+
+interface Particle {
+  id: number;
+  size: number;
+  x: number;
+  y: number;
+}
 
 interface ParticleBackgroundProps {
   particleCount?: number;
@@ -13,79 +20,86 @@ interface ParticleBackgroundProps {
 const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   particleCount = 50,
   particleColor = '#ffffff',
-  className
+  className,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [particles, setParticles] = useState<Particle[]>([]);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const finalParticleCount = isMobile ? Math.floor(particleCount / 2) : particleCount;
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const particles: HTMLDivElement[] = [];
-
+    const newParticles: Particle[] = [];
     for (let i = 0; i < finalParticleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      container.appendChild(particle);
-      particles.push(particle);
-
-      const size = gsap.utils.random(3, 10);
-      const duration = gsap.utils.random(10, 30);
-      const delay = gsap.utils.random(0, 15);
-      const startX = gsap.utils.random(0, 100);
-      const startY = gsap.utils.random(0, 100);
-
-      gsap.set(particle, {
-        width: size,
-        height: size,
-        x: `${startX}vw`,
-        y: `${startY}vh`,
-        backgroundColor: particleColor,
-        opacity: 0,
-        boxShadow: `0 0 15px ${particleColor}, 0 0 25px ${particleColor}`,
+      newParticles.push({
+        id: i,
+        size: gsap.utils.random(2, 8),
+        x: gsap.utils.random(0, 100),
+        y: gsap.utils.random(0, 100),
       });
-
-      const animateParticle = (p: HTMLDivElement) => {
-        const endX = gsap.utils.random(startX - 10, startX + 10);
-        const endY = gsap.utils.random(startY - 10, startY + 10);
-
-        gsap.to(p, {
-          x: `${endX}vw`,
-          y: `${endY}vh`,
-          opacity: gsap.utils.random(0.1, 0.6),
-          duration: duration,
-          delay: delay,
-          ease: 'power1.inOut',
-          repeat: -1,
-          yoyo: true,
-          onRepeat: () => {
-             gsap.to(p, {
-                opacity: 0,
-                duration: duration / 2,
-                ease: 'power1.inOut',
-                yoyo: true,
-                repeat: 1
-            });
-          }
-        });
-      };
-      
-      animateParticle(particle);
     }
-    
-    return () => {
-      particles.forEach(particle => {
-        gsap.killTweensOf(particle);
-        if (particle.parentNode) {
-            particle.parentNode.removeChild(particle);
+    setParticles(newParticles);
+  }, [finalParticleCount]);
+
+  useEffect(() => {
+    if (particles.length > 0 && containerRef.current) {
+      const particleElements = containerRef.current.children;
+      gsap.to(particleElements, { opacity: 1, duration: 1, stagger: 0.02 });
+
+      particles.forEach((particle, i) => {
+        const pEl = particleElements[i];
+        if (pEl) {
+          const duration = gsap.utils.random(10, 30);
+          const delay = gsap.utils.random(0, 15);
+          
+          const animateParticle = () => {
+            const endX = gsap.utils.random(particle.x - 5, particle.x + 5);
+            const endY = gsap.utils.random(particle.y - 5, particle.y + 5);
+            
+            gsap.to(pEl, {
+              x: `${endX}vw`,
+              y: `${endY}vh`,
+              opacity: gsap.utils.random(0.1, 0.6),
+              duration: duration,
+              delay: delay,
+              ease: 'power1.inOut',
+              repeat: -1,
+              yoyo: true,
+              onRepeat: () => {
+                gsap.to(pEl, {
+                  opacity: 0,
+                  duration: duration / 2,
+                  ease: 'power1.inOut',
+                  yoyo: true,
+                  repeat: 1
+                });
+              }
+            });
+          };
+          animateParticle();
         }
       });
-    };
-  }, [finalParticleCount, particleColor]);
+    }
+  }, [particles]);
 
-  return <div ref={containerRef} className={cn("particle-background", className)} />;
+  return (
+    <div ref={containerRef} className={cn('particle-background', className)}>
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="particle"
+          style={{
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            left: `${p.x}vw`,
+            top: `${p.y}vh`,
+            backgroundColor: particleColor,
+            boxShadow: `0 0 10px ${particleColor}, 0 0 15px ${particleColor}`,
+            opacity: 0,
+          }}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default ParticleBackground;

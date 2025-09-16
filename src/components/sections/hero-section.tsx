@@ -15,16 +15,15 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function HeroSection() {
   const { theme } = useTheme();
-  const [particleColor, setParticleColor] = useState<string>('#888888');
+  const [particleColor, setParticleColor] = useState<string>('#ffffff');
 
   useEffect(() => {
-    // Using CSS variables to fetch theme colors
-    // This needs to run on the client after the theme is determined.
+    // This logic needs to run on the client after the theme is determined.
     const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
     const foregroundColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
     
     if (theme === 'dark') {
-        setParticleColor(`hsl(${primaryColor})`);
+      setParticleColor(`hsl(${primaryColor})`);
     } else {
       setParticleColor(`hsl(${foregroundColor})`);
     }
@@ -40,7 +39,13 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden transition-colors duration-300">
+    <section 
+      id="hero" 
+      className="relative w-full overflow-hidden transition-colors duration-300"
+      style={{
+        background: 'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)'
+      }}
+    >
       <ParticleBackground
         particleColor={particleColor}
         className="absolute inset-0 z-0 h-full w-full"
