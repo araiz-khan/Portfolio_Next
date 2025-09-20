@@ -64,7 +64,7 @@ export const bentoCardData: BentoCardData[] = [
     title: 'AI Recipe Generator',
     description: 'Generates unique recipes from ingredients you have at home using generative AI.',
     label: 'GenAI',
-    imageUrl: '/images/your-project-image-1.png',
+    imageUrl: 'https://picsum.photos/seed/ai-recipe/600/400',
     imageHint: 'recipe application',
     liveUrl: '#',
     githubUrl: '#',
