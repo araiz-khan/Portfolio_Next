@@ -27,12 +27,11 @@ export const projects: Project[] = [
   {
     id: 'project-1',
     title: 'AI-Powered Recipe Generator',
-    description: 'A web app that generates unique recipes based on user-provided ingredients, using generative AI. Features saving, and sharing.',
-    technologies: ['Next.js', 'TypeScript', 'Genkit', 'Firebase'],
-    imageUrl: 'https://picsum.photos/seed/food-app/600/400',
+    description: 'A web app that detects ingredients and generate recipe according to the picture provided by user, using generative AI.',
+    technologies: ['Next.js', 'TypeScript', 'Firebase'],
+    imageUrl: 'images/SnapRecipe/Snaprecipe.png',
     imageHint: 'recipe application',
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://snaprecipe-ai.netlify.app/',
     industry: 'Food Tech',
   },
   {
