@@ -34,16 +34,16 @@ export default function Footer() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="icon" className="rounded-full" asChild>
-            <Link href="https://github.com/araizkhan" target="_blank"><Github className="h-5 w-5" /></Link>
+            <Link href="https://github.com/araiz-khan" target="_blank"><Github className="h-5 w-5" /></Link>
           </Button>
           <Button variant="outline" size="icon" className="rounded-full" asChild>
-            <Link href="https://linkedin.com/in/araiz-khan" target="_blank"><Linkedin className="h-5 w-5" /></Link>
+            <Link href="https://www.linkedin.com/in/araiz-khan/" target="_blank"><Linkedin className="h-5 w-5" /></Link>
           </Button>
           <Button variant="outline" size="icon" className="rounded-full" asChild>
-            <Link href="https://twitter.com/araiz_khan" target="_blank"><Twitter className="h-5 w-5" /></Link>
+            <Link href="https://x.com/araiz_exe" target="_blank"><Twitter className="h-5 w-5" /></Link>
           </Button>
            <Button variant="outline" size="icon" className="rounded-full" asChild>
-            <Link href="https://stackoverflow.com/users/22490048/araiz-khan" target="_blank">
+            <Link href="https://stackoverflow.com/users/21872928/araiz-khan" target="_blank">
               <StackOverflowIcon className="h-5 w-5" />
             </Link>
           </Button>
