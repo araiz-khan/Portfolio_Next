@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: 'AI-Powered Recipe Generator',
     description: 'A web app that detects ingredients and generate recipe according to the picture provided by user, using generative AI.',
     technologies: ['Next.js', 'TypeScript', 'Firebase'],
-    imageUrl: 'images/SnapRecipe/Snaprecipe.png',
+    imageUrl: 'images/Snaprecipe.png',
     imageHint: 'recipe application',
     liveUrl: 'https://snaprecipe-ai.netlify.app/',
     industry: 'Food Tech',
