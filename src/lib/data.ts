@@ -80,8 +80,6 @@ export const bentoCardData: BentoCardData[] = [
     imageHint: 'stock charts',
     liveUrl: '#',
     githubUrl: '#',
-    width: 600,
-    height: 400,
   },
   {
     color: '#060010',
@@ -92,8 +90,6 @@ export const bentoCardData: BentoCardData[] = [
     imageHint: 'fitness application',
     liveUrl: '#',
     githubUrl: '#',
-    width: 600,
-    height: 400,
   },
   {
     color: '#060010',
@@ -103,8 +99,6 @@ export const bentoCardData: BentoCardData[] = [
     imageUrl: 'https://picsum.photos/seed/travel-planner/600/400',
     imageHint: 'travel map',
     liveUrl: '#',
-    width: 600,
-    height: 400,
   },
   {
     color: '#060010',
@@ -114,8 +108,6 @@ export const bentoCardData: BentoCardData[] = [
     imageUrl: 'https://picsum.photos/seed/chatbot/600/400',
     imageHint: 'support chatbot',
     githubUrl: '#',
-    width: 600,
-    height: 400,
   },
   {
     color: '#060010',
@@ -124,7 +116,5 @@ export const bentoCardData: BentoCardData[] = [
     label: 'Cloud',
     imageUrl: 'https://picsum.photos/seed/video-processing/600/400',
     imageHint: 'cloud processing',
-    width: 600,
-    height: 400,
   }
 ];

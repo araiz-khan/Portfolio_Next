@@ -513,16 +513,19 @@ const MagicBento: React.FC<BentoProps> = ({
               '--glow-color': glowColor
             } as React.CSSProperties
           };
+          
+          const hasDimensions = card.width && card.height;
 
           const CardContent = (
             <>
                {card.imageUrl && (
                 <>
-                   <Image
+                  <Image
                     src={card.imageUrl}
                     alt={card.title || 'Project image'}
-                    width={card.width}
-                    height={card.height}
+                    width={hasDimensions ? card.width : undefined}
+                    height={hasDimensions ? card.height : undefined}
+                    fill={!hasDimensions}
                     className={cn(
                       'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
                       isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
