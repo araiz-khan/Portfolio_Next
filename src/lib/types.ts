@@ -1,3 +1,5 @@
+import type { StaticImageData } from 'next/image';
+
 export type Service = {
   title: string;
   icon: string;
@@ -23,6 +25,8 @@ export interface BentoCardData {
   label?: string;
   imageUrl?: string;
   imageHint?: string;
+  width?: number;
+  height?: number;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
   liveUrl?: string;

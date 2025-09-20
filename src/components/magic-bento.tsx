@@ -518,12 +518,13 @@ const MagicBento: React.FC<BentoProps> = ({
             <>
                {card.imageUrl && (
                 <>
-                  <Image
+                   <Image
                     src={card.imageUrl}
                     alt={card.title || 'Project image'}
-                    fill
+                    width={card.width}
+                    height={card.height}
                     className={cn(
-                      'object-cover transition-opacity duration-300',
+                      'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
                       isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                     )}
                     data-ai-hint={card.imageHint}

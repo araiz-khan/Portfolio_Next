@@ -64,10 +64,12 @@ export const bentoCardData: BentoCardData[] = [
     title: 'AI Recipe Generator',
     description: 'Generates unique recipes from ingredients you have at home using generative AI.',
     label: 'GenAI',
-    imageUrl: 'https://picsum.photos/seed/ai-recipe/600/400',
+    imageUrl: '/images/snaprecipe.png',
     imageHint: 'recipe application',
-    liveUrl: '#',
+    liveUrl: 'https://snaprecipe-ai.netlify.app/',
     githubUrl: '#',
+    width: 1200,
+    height: 700,
   },
   {
     color: '#060010',
@@ -78,6 +80,8 @@ export const bentoCardData: BentoCardData[] = [
     imageHint: 'stock charts',
     liveUrl: '#',
     githubUrl: '#',
+    width: 600,
+    height: 400,
   },
   {
     color: '#060010',
@@ -88,6 +92,8 @@ export const bentoCardData: BentoCardData[] = [
     imageHint: 'fitness application',
     liveUrl: '#',
     githubUrl: '#',
+    width: 600,
+    height: 400,
   },
   {
     color: '#060010',
@@ -97,6 +103,8 @@ export const bentoCardData: BentoCardData[] = [
     imageUrl: 'https://picsum.photos/seed/travel-planner/600/400',
     imageHint: 'travel map',
     liveUrl: '#',
+    width: 600,
+    height: 400,
   },
   {
     color: '#060010',
@@ -106,6 +114,8 @@ export const bentoCardData: BentoCardData[] = [
     imageUrl: 'https://picsum.photos/seed/chatbot/600/400',
     imageHint: 'support chatbot',
     githubUrl: '#',
+    width: 600,
+    height: 400,
   },
   {
     color: '#060010',
@@ -113,6 +123,8 @@ export const bentoCardData: BentoCardData[] = [
     description: 'A cloud-native solution for automatically transcoding and watermarking uploaded videos.',
     label: 'Cloud',
     imageUrl: 'https://picsum.photos/seed/video-processing/600/400',
-    imageHint: 'cloud processing'
+    imageHint: 'cloud processing',
+    width: 600,
+    height: 400,
   }
 ];
