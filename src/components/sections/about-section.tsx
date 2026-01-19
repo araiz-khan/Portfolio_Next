@@ -29,7 +29,7 @@ export default function AboutSection() {
                 alt="Profile Avatar"
                 width={150}
                 height={150}
-                className="rounded-full object-cover shadow-lg"
+                className="w-[150px] h-[150px] rounded-full object-cover shadow-lg"
                 loading="lazy"
               />
             </div>
@@ -123,7 +123,7 @@ export default function AboutSection() {
               alt="Profile Avatar"
               width={300}
               height={300}
-              className="rounded-full object-cover shadow-lg"
+              className="w-[300px] h-[300px] rounded-full object-cover shadow-lg"
               loading="lazy"
             />
           </div>
