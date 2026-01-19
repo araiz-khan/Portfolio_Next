@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "An AI-powered recipe generator application.",
+      "imageUrl": "https://picsum.photos/seed/food-app/600/400",
+      "imageHint": "recipe application"
+    },
+    {
+      "id": "project-2",
+      "description": "A real-time stock market data dashboard.",
+      "imageUrl": "https://picsum.photos/seed/stock-dashboard/600/400",
+      "imageHint": "stock charts"
+    },
+    {
+      "id": "project-3",
+      "description": "A mobile fitness tracking application.",
+      "imageUrl": "https://picsum.photos/seed/fitness-app/600/400",
+      "imageHint": "fitness application"
+    },
+     {
+      "id": "project-4",
+      "description": "An interactive trip planning web application.",
+      "imageUrl": "https://picsum.photos/seed/travel-planner/600/400",
+      "imageHint": "travel map"
+    },
+    {
+      "id": "project-5",
+      "description": "An AI chatbot for customer support.",
+      "imageUrl": "https://picsum.photos/seed/chatbot/600/400",
+      "imageHint": "support chatbot"
+    },
+    {
+      "id": "project-6",
+      "description": "A diagram of a cloud video processing pipeline.",
+      "imageUrl": "https://picsum.photos/seed/video-processing/600/400",
+      "imageHint": "cloud processing"
+    },
+    {
+      "id": "avatar",
+      "description": "A professional-looking person for an avatar.",
+      "imageUrl": "https://picsum.photos/seed/avatar/200/200",
+      "imageHint": "professional portrait"
+    }
+  ]
+}
