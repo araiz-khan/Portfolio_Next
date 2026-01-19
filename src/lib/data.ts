@@ -64,7 +64,7 @@ export const bentoCardData: BentoCardData[] = [
     title: 'AI Recipe Generator',
     description: 'Generates unique recipes from ingredients you have at home using generative AI.',
     label: 'GenAI',
-    imageUrl: '/images/snaprecipe.png',
+    imageUrl: '/images/Snaprecipe.png',
     imageHint: 'recipe application',
     liveUrl: 'https://snaprecipe-ai.netlify.app/',
     githubUrl: '#',
