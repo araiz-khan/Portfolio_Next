@@ -498,10 +498,16 @@ const MagicBento: React.FC<BentoProps> = ({
   const shouldDisableAnimations = disableAnimations || isMobile;
 
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  const isDark = mounted ? theme === 'dark' : false; // Default to light theme during SSR
 
   // Adjust glow color based on theme if not overridden
-  const effectiveGlowColor = glowColor === DEFAULT_GLOW_COLOR && !isDark ? '0, 0, 0' : glowColor;
+  const effectiveGlowColor = mounted && (glowColor === DEFAULT_GLOW_COLOR && !isDark) ? '0, 0, 0' : glowColor;
 
   return (
     <>
