@@ -26,7 +26,7 @@ export default function AboutSection() {
               className="flex items-center justify-center py-4 md:hidden"
             >
               <Image
-                src="https://picsum.photos/seed/avatar/200/200"
+                src="/images/profile-pic.png"
                 alt="Profile Avatar"
                 width={200}
                 height={200}
@@ -121,7 +121,7 @@ export default function AboutSection() {
             className="hidden items-center justify-center md:flex"
           >
             <Image
-              src="https://picsum.photos/seed/avatar/400/400"
+              src="/images/profile-pic.png"
               alt="Profile Avatar"
               width={400}
               height={400}
