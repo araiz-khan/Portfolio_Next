@@ -1,9 +1,14 @@
 'use client';
 
-import { ContactForm } from '@/components/contact-form';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 import Link from 'next/link';
+
+const ContactForm = dynamic(() => import('@/components/contact-form').then(mod => ({ default: mod.ContactForm })), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-muted rounded-lg h-96"></div>
+});
 
 export default function ContactSection() {
   return (
