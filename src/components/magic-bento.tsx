@@ -4,7 +4,6 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
 import './magic-bento.css';
 import { BentoCardData } from '@/lib/types';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
@@ -537,19 +536,13 @@ const MagicBento: React.FC<BentoProps> = ({
             } as React.CSSProperties
           };
 
-          const hasDimensions = card.width && card.height;
-
           const CardContent = (
             <>
               {card.imageUrl && (
                 <>
-                  <Image
+                  <img
                     src={card.imageUrl}
                     alt={card.title || 'Project image'}
-                    width={hasDimensions ? card.width : undefined}
-                    height={hasDimensions ? card.height : undefined}
-                    fill={!hasDimensions}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={cn(
                       'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
                       isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
