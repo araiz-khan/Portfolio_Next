@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {
   User,
   Mail,
@@ -25,14 +24,13 @@ export default function AboutSection() {
             <div
               className="flex items-center justify-center py-4 md:hidden"
             >
-              <Image
+              <img
                 src="/images/profile-pic.png"
                 alt="Profile Avatar"
                 width={200}
                 height={200}
-                sizes="(max-width: 768px) 100vw, 200px"
                 className="rounded-full object-cover shadow-lg"
-                data-ai-hint="professional portrait"
+                loading="lazy"
               />
             </div>
             <p className="text-muted-foreground md:text-lg">
@@ -120,14 +118,13 @@ export default function AboutSection() {
           <div
             className="hidden items-center justify-center md:flex"
           >
-            <Image
+            <img
               src="/images/profile-pic.png"
               alt="Profile Avatar"
               width={400}
               height={400}
-              sizes="(max-width: 768px) 100vw, 400px"
               className="rounded-full object-cover shadow-lg"
-              data-ai-hint="professional portrait"
+              loading="lazy"
             />
           </div>
         </div>
