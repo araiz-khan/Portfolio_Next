@@ -597,11 +597,24 @@ const MagicBento: React.FC<BentoProps> = ({
                   >
                     <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
                   </Button>
-                  {card.githubUrl && card.githubUrl !== '#' && (
-                    <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10 hover:text-white">
-                      <Link href={card.githubUrl} target="_blank" onClick={(e) => e.stopPropagation()}>
-                        <Github className="mr-2 h-4 w-4" /> Source
-                      </Link>
+                  {card.githubUrl && (
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-white hover:bg-white/10 hover:text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (card.githubUrl && card.githubUrl !== '#') {
+                          window.open(card.githubUrl, '_blank');
+                        } else {
+                          toast({
+                            title: "Source Code Coming Soon",
+                            description: "The source code for this project will be available soon!",
+                          });
+                        }
+                      }}
+                    >
+                      <Github className="mr-2 h-4 w-4" /> Source
                     </Button>
                   )}
                 </div>
