@@ -27,8 +27,8 @@ export default function AboutSection() {
               <img
                 src="/images/profile-pic.png"
                 alt="Profile Avatar"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 className="rounded-full object-cover shadow-lg"
                 loading="lazy"
               />
@@ -121,8 +121,8 @@ export default function AboutSection() {
             <img
               src="/images/profile-pic.png"
               alt="Profile Avatar"
-              width={400}
-              height={400}
+              width={300}
+              height={300}
               className="rounded-full object-cover shadow-lg"
               loading="lazy"
             />
