@@ -76,7 +76,7 @@ export const bentoCardData: BentoCardData[] = [
     color: '#060010',
     title: 'Hotel Reservation App',
     description: 'User-friendly hotel booking app with seamless reservation management and real-time availability.',
-    label: 'Hospitality',
+    label: 'Android App',
     imageUrl: 'images/Projects/Alpha Hotels.png',
     imageHint: 'hotel reservation mobile app',
     liveUrl: '#',
