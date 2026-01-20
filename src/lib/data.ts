@@ -76,7 +76,7 @@ export const bentoCardData: BentoCardData[] = [
     title: 'Hotel Management Android App',
     description: 'Comprehensive hotel management solution with booking, check-in, and staff management features.',
     label: 'Hospitality',
-    imageUrl: 'https://images.unsplash.com/photo-WAHH5Z1i3rw?w=600&h=400&fit=crop&crop=center',
+    imageUrl: 'https://images.unsplash.com/photo-7abDBJ9bylA?w=600&h=400&fit=crop&crop=center',
     imageHint: 'hotel management mobile app',
     liveUrl: '#',
     githubUrl: '#',
