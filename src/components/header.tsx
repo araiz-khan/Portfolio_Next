@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, User, Mail, FolderGit, Wrench } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { AKIcon } from './ak-icon';
+import Logo from './Logo';
 import { ThemeToggle } from './theme-toggle';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -23,10 +23,19 @@ const navItems = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoScale, setLogoScale] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 10);
+      
+      // Calculate smooth scale based on scroll position
+      // Scale from 1 (at top) to 0.3 (when scrolled down)
+      // Adjust the divisor to control how quickly it scales
+      const maxScroll = 300; // Increased scroll distance for smoother scaling
+      const scale = Math.max(0.3, 1 - (scrollY / maxScroll));
+      setLogoScale(scale);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -69,18 +78,18 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
+        'fixed top-0 z-50 w-full transition-all duration-300',
         isScrolled ? 'border-b border-border/40 bg-background/80 backdrop-blur-lg' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link href="#top" onClick={(e) => handleNavClick(e, '#top')} className={cn('flex items-center gap-2 transition-all duration-300 ml-5', !isScrolled && 'md:mt-8')}>
-          <AKIcon
-            className={cn(
-              'transform-gpu transition-transform duration-300 ease-in-out',
-              isScrolled ? 'scale-[0.45]' : 'md:scale-150'
-            )}
-          />
+          <div 
+            className="transform-gpu transition-transform duration-300 ease-out"
+            style={{ transform: `scale(${logoScale})` }}
+          >
+            <Logo className="md:w-48 md:h-48 md:text-7xl" />
+          </div>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
@@ -100,7 +109,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-6">
                  <Link href="#top" onClick={(e) => handleNavClick(e, '#top')} className="flex items-center gap-2 mb-8">
-                    <AKIcon className="h-8 w-8 text-2xl" />
+                    <Logo className="w-8 h-8 text-xl" />
                 </Link>
                 <nav className="flex flex-col gap-6">
                   {navItems.map((item) => (

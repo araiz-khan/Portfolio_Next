@@ -583,7 +583,7 @@ const MagicBento: React.FC<BentoProps> = ({
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-white hover:bg-white/10 hover:text-white"
+                      className={isDark ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-black/10 hover:text-foreground"}
                       onClick={(e) => {
                         e.stopPropagation();
                         if (card.downloadUrl && card.downloadUrl !== '#') {
@@ -597,7 +597,7 @@ const MagicBento: React.FC<BentoProps> = ({
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-white hover:bg-white/10 hover:text-white"
+                      className={isDark ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-black/10 hover:text-foreground"}
                       onClick={(e) => {
                         e.stopPropagation();
                         if (card.liveUrl && card.liveUrl !== '#') {
@@ -617,7 +617,7 @@ const MagicBento: React.FC<BentoProps> = ({
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-white hover:bg-white/10 hover:text-white"
+                      className={isDark ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-black/10 hover:text-foreground"}
                       onClick={(e) => {
                         e.stopPropagation();
                         if (card.githubUrl && card.githubUrl !== '#') {

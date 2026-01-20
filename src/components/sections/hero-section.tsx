@@ -24,12 +24,12 @@ export default function HeroSection() {
   return (
     <section 
       id="hero" 
-      className="relative w-full min-h-[calc(100vh-4rem)] overflow-hidden bg-background transition-colors duration-300 flex flex-col justify-center"
+      className="relative w-full min-h-screen overflow-hidden bg-background transition-colors duration-300 flex flex-col justify-center"
     >
       <ParticleBackground
         className="absolute inset-0 z-0 h-full w-full"
       />
-      <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6 pt-16">
         <div className="grid items-center gap-12 md:grid-cols-1">
           <div className="flex flex-col justify-center space-y-6 text-center">
             <div className="space-y-4">
