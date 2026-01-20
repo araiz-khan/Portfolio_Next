@@ -55,6 +55,42 @@ const MagicBento: React.FC<MagicBentoProps> = ({
     setIsMobile(typeof window !== 'undefined' && window.innerWidth < 768);
   }, []);
 
+  // Generate stars
+  useEffect(() => {
+    if (!enableStars || !gridRef.current) return;
+
+    const cards = gridRef.current.querySelectorAll('.card');
+    cards.forEach((card) => {
+      const starsContainer = card.querySelector('.stars-container');
+      if (starsContainer) return; // Already generated
+
+      const container = document.createElement('div');
+      container.className = 'stars-container';
+      container.style.cssText = 'position: absolute; inset: 0; pointer-events: none; z-index: 1;';
+      
+      // Generate 20 stars per card
+      for (let i = 0; i < 20; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.cssText = `
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: white;
+          border-radius: 50%;
+          left: ${Math.random() * 100}%;
+          top: ${Math.random() * 100}%;
+          opacity: ${Math.random() * 0.5 + 0.3};
+          animation: twinkle ${Math.random() * 3 + 2}s ease-in-out infinite;
+          animation-delay: ${Math.random() * 2}s;
+        `;
+        container.appendChild(star);
+      }
+      
+      card.appendChild(container);
+    });
+  }, [enableStars, cardData]);
+
   return (
     <div className="card-grid bento-section" ref={gridRef}>
       {cardData.map((card, index) => {

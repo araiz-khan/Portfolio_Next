@@ -89,6 +89,17 @@
   overflow: hidden;
 }
 
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
 @media (max-width: 768px) {
   .card-grid {
     grid-template-columns: 1fr;

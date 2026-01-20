@@ -17,7 +17,7 @@ export default function ProjectsSection() {
         </div>
         <MagicBento 
           cardData={bentoCardData}
-          enableStars={false}
+          enableStars={true}
           enableSpotlight={false}
           enableBorderGlow={true}
           textAutoHide={true}
