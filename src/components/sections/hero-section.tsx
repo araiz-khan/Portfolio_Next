@@ -27,7 +27,7 @@ export default function HeroSection() {
       className="relative w-full min-h-screen overflow-hidden bg-background transition-colors duration-300 flex flex-col justify-center"
     >
       <ParticleBackground
-        particleCount={20}
+        particleCount={30}
         className="absolute inset-0 z-0 h-full w-full"
       />
       <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6 pt-16">
