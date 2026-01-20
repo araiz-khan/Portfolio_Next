@@ -37,13 +37,19 @@ export default function ProjectCard({ project }: { project: Project }) {
         <CardFooter className="flex-col items-start gap-4">
           <div className="flex w-full justify-start items-center">
             <div>
-              {project.liveUrl && (
+              {project.downloadUrl ? (
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href={project.downloadUrl} target="_blank">
+                    <ExternalLink className="mr-2 h-4 w-4" /> Download
+                  </Link>
+                </Button>
+              ) : project.liveUrl ? (
                 <Button variant="ghost" size="sm" asChild>
                   <Link href={project.liveUrl} target="_blank">
                     <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
                   </Link>
                 </Button>
-              )}
+              ) : null}
               {project.githubUrl && (
                 <Button variant="ghost" size="sm" asChild>
                   <Link href={project.githubUrl} target="_blank">
