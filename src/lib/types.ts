@@ -32,4 +32,5 @@ export interface BentoCardData {
   disableAnimations?: boolean;
   liveUrl?: string;
   githubUrl?: string;
+  downloadUrl?: string;
 }

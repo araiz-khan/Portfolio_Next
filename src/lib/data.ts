@@ -81,6 +81,7 @@ export const bentoCardData: BentoCardData[] = [
     imageHint: 'hotel reservation mobile app',
     liveUrl: '#',
     githubUrl: 'https://github.com/araiz-khan/Alpha-Hotels',
+    downloadUrl: 'https://github.com/araiz-khan/Alpha-Hotels/releases/download/App_Release/Alpha_Hotels_2.23.apk',
   },
   {
     color: '#060010',

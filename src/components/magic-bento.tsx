@@ -579,24 +579,40 @@ const MagicBento: React.FC<BentoProps> = ({
                 <h2 className="card__title">{card.title}</h2>
                 <p className="card__description">{card.description}</p>
                 <div className="card__buttons mt-4 flex gap-2">
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="text-white hover:bg-white/10 hover:text-white"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (card.liveUrl && card.liveUrl !== '#') {
-                        window.open(card.liveUrl, '_blank');
-                      } else {
-                        toast({
-                          title: "Live Demo Coming Soon",
-                          description: "This project is currently in development. Check back later!",
-                        });
-                      }
-                    }}
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                  </Button>
+                  {card.downloadUrl ? (
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-white hover:bg-white/10 hover:text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (card.downloadUrl && card.downloadUrl !== '#') {
+                          window.open(card.downloadUrl, '_blank');
+                        }
+                      }}
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" /> Download
+                    </Button>
+                  ) : (
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-white hover:bg-white/10 hover:text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (card.liveUrl && card.liveUrl !== '#') {
+                          window.open(card.liveUrl, '_blank');
+                        } else {
+                          toast({
+                            title: "Live Demo Coming Soon",
+                            description: "This project is currently in development. Check back later!",
+                          });
+                        }
+                      }}
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+                    </Button>
+                  )}
                   {card.githubUrl && (
                     <Button 
                       variant="ghost" 
