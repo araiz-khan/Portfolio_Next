@@ -42,7 +42,8 @@ export const projects: Project[] = [
     imageUrl: 'images/Projects/Alpha Hotels.png',
     imageHint: 'hotel reservation application',
     liveUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/araiz-khan/Alpha-Hotels',
+    downloadUrl: 'https://github.com/araiz-khan/Alpha-Hotels/releases/download/App_Release/Alpha_Hotels_2.23.apk',
     industry: 'Hospitality',
   },
   {
@@ -79,7 +80,7 @@ export const bentoCardData: BentoCardData[] = [
     imageUrl: 'images/Projects/Alpha Hotels.png',
     imageHint: 'hotel reservation mobile app',
     liveUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/araiz-khan/Alpha-Hotels',
   },
   {
     color: '#060010',

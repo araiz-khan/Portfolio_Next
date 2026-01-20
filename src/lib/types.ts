@@ -15,6 +15,7 @@ export type Project = {
   imageHint: string;
   liveUrl?: string;
   githubUrl?: string;
+  downloadUrl?: string;
   industry: string;
 };
 
