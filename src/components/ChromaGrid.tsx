@@ -83,7 +83,7 @@ export const ChromaGrid = ({
           {c.handle ? (
             <span className="handle text-xs uppercase tracking-wider opacity-75">{c.handle}</span>
           ) : null}
-          <p className="role mt-2 text-sm text-gray-300 line-clamp-2">{c.subtitle}</p>
+          <p className="role mt-2 text-sm line-clamp-2">{c.subtitle}</p>
         </div>
       </footer>
     </>
@@ -95,7 +95,7 @@ export const ChromaGrid = ({
         <Button
           variant="outline"
           size="sm"
-          className="h-8 border-white/20 bg-white/5 text-white hover:bg-white/20 hover:text-white"
+          className="h-8 border-border bg-background/40 text-foreground hover:bg-accent hover:text-accent-foreground"
           asChild
         >
           <a href={c.downloadUrl} target="_blank" rel="noopener noreferrer">
@@ -107,7 +107,7 @@ export const ChromaGrid = ({
         <Button
           variant="outline"
           size="sm"
-          className="h-8 border-white/20 bg-white/5 text-white hover:bg-white/20 hover:text-white"
+          className="h-8 border-border bg-background/40 text-foreground hover:bg-accent hover:text-accent-foreground"
           asChild
         >
           <a href={c.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -121,7 +121,7 @@ export const ChromaGrid = ({
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 text-white hover:bg-white/10 hover:text-white"
+          className="h-8 text-foreground hover:bg-accent hover:text-accent-foreground"
           asChild
         >
           <a href={c.githubUrl} target="_blank" rel="noopener noreferrer">

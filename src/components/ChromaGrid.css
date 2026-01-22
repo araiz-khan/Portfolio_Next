@@ -135,7 +135,7 @@
 .chroma-info {
   position: relative;
   padding: 0.75rem 1rem;
-  color: #fff;
+  color: hsl(var(--foreground));
   font-family: system-ui, sans-serif;
   display: flex;
   flex-direction: column;
@@ -148,7 +148,7 @@
 
 .chroma-info .role,
 .chroma-info .handle {
-  color: #aaa;
+  color: hsl(var(--muted-foreground));
 }
 
 .chroma-meta {
