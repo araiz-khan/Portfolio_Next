@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { StackOverflowIcon } from '../stackoverflow-icon';
 
 export default function AboutSection() {
@@ -24,13 +25,13 @@ export default function AboutSection() {
             <div
               className="flex items-center justify-center py-4 md:hidden"
             >
-              <img
+              <Image
                 src="/images/profile-pic.jpeg"
                 alt="Profile Avatar"
                 width={150}
                 height={150}
                 className="w-[150px] h-[150px] rounded-full object-cover shadow-lg"
-                loading="lazy"
+                priority
               />
             </div>
             <p className="text-muted-foreground md:text-lg">
@@ -118,13 +119,13 @@ export default function AboutSection() {
           <div
             className="hidden items-center justify-center md:flex"
           >
-            <img
+            <Image
               src="/images/profile-pic.jpeg"
               alt="Profile Avatar"
               width={300}
               height={300}
               className="w-[300px] h-[300px] rounded-full object-cover shadow-lg"
-              loading="lazy"
+              priority
             />
           </div>
         </div>

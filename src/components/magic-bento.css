@@ -13,12 +13,34 @@
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   color: white;
   aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Ensure white text in dark mode */
+.dark .card {
+  color: white;
+}
+
+.dark .card__title,
+.dark .card__description,
+.dark .card__label {
+  color: white;
+}
+
+/* Light mode card styling */
+:root:not(.dark) .card {
+  background: linear-gradient(135deg, rgba(230, 230, 235, 0.95), rgba(210, 210, 220, 0.95)) !important;
+  color: white;
+  border: 1px solid rgba(150, 150, 160, 0.2);
+}
+
+:root:not(.dark) .card:hover {
+  box-shadow: 0 8px 32px rgba(100, 100, 120, 0.2), 0 0 20px rgba(120, 120, 140, 0.15);
 }
 
 .card--border-glow {
@@ -46,6 +68,16 @@
   z-index: 0;
 }
 
+/* Light mode border glow effect */
+:root:not(.dark) .card--border-glow::before {
+  background: radial-gradient(
+      var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(100, 100, 120, 0.25),
+      transparent
+    )
+    no-repeat;
+}
+
 .card__header,
 .card__content {
   position: relative;
@@ -63,6 +95,12 @@
   margin-bottom: 1rem;
 }
 
+/* Light mode label */
+:root:not(.dark) .card__label {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
 .card__title {
   font-size: 1.5rem;
   font-weight: 600;
@@ -74,6 +112,12 @@
   opacity: 0.8;
   line-height: 1.5;
   flex-grow: 1;
+}
+
+/* Light mode description */
+:root:not(.dark) .card__description {
+  opacity: 0.9;
+  color: white;
 }
 
 .card--text-autohide .card__content {
@@ -89,6 +133,27 @@
 
 .particle-container {
   overflow: hidden;
+}
+
+/* Particle styling for light mode */
+.particle {
+  transition: box-shadow 0.3s ease;
+}
+
+:root:not(.dark) .particle {
+  background: rgba(80, 80, 100, 1) !important;
+  box-shadow: 0 0 12px rgba(100, 100, 120, 0.8), 0 0 20px rgba(120, 120, 140, 0.5) !important;
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.4; 
+    transform: scale(0.8);
+  }
 }
 
 @media (max-width: 768px) {

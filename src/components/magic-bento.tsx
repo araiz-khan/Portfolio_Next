@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
 import './magic-bento.css';
 import { BentoCardData } from '@/lib/types';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
@@ -519,14 +520,16 @@ const MagicBento: React.FC<BentoProps> = ({
             <>
                {card.imageUrl && (
                 <>
-                  <img
+                  <Image
                     src={card.imageUrl}
                     alt={card.title || 'Project image'}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={cn(
-                      'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
+                      'object-cover transition-opacity duration-300',
                       isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                     )}
-                    loading="lazy"
+                    priority={false}
                   />
                   <div
                     className={cn(
@@ -543,7 +546,14 @@ const MagicBento: React.FC<BentoProps> = ({
                 <h2 className="card__title">{card.title}</h2>
                 <p className="card__description">{card.description}</p>
                 <div className="card__buttons mt-4 flex gap-2">
-                  {card.liveUrl && (
+                  {card.downloadUrl && (
+                    <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10 hover:text-white">
+                      <Link href={card.downloadUrl} target="_blank" onClick={(e) => e.stopPropagation()}>
+                        <ExternalLink className="mr-2 h-4 w-4" /> Download
+                      </Link>
+                    </Button>
+                  )}
+                  {card.liveUrl && !card.downloadUrl && (
                     <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10 hover:text-white">
                       <Link href={card.liveUrl} target="_blank" onClick={(e) => e.stopPropagation()}>
                         <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
