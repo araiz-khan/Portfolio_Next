@@ -29,12 +29,17 @@ export default function Header() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 10);
-      
-      // Calculate smooth scale based on scroll position
-      // Scale from 1 (at top) to 0.3 (when scrolled down)
-      // Adjust the divisor to control how quickly it scales
-      const maxScroll = 300; // Increased scroll distance for smoother scaling
-      const scale = Math.max(0.3, 1 - (scrollY / maxScroll));
+
+      // Keep logo readable on mobile; gently shrink on desktop only.
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      if (isMobile) {
+        setLogoScale(1);
+        return;
+      }
+
+      const maxScroll = 300;
+      const minScale = 0.65;
+      const scale = Math.max(minScale, 1 - scrollY / maxScroll);
       setLogoScale(scale);
     };
     window.addEventListener('scroll', handleScroll);

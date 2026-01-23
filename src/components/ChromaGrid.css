@@ -115,6 +115,21 @@
   opacity: 1;
 }
 
+/* Mobile/touch: show full color and disable spotlight/reveal effects */
+@media (hover: none), (pointer: coarse) {
+  .chroma-card-base {
+    filter: none;
+  }
+
+  .chroma-card-reveal {
+    display: none;
+  }
+
+  .chroma-card::before {
+    display: none;
+  }
+}
+
 .chroma-img-wrapper {
   position: relative;
   padding: 10px;
