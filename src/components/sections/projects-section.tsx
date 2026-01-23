@@ -31,7 +31,7 @@ export default function ProjectsSection() {
     // Replaced bg-secondary with bg-background to avoid blue tint and improved section styling
     <section
       id="projects"
-      className="projects-section w-full bg-background py-20 md:py-32 transition-colors duration-300 dark:bg-[var(--projects-bg)]"
+      className="projects-section w-full bg-[var(--projects-bg)] py-20 md:py-32 transition-colors duration-300"
     >
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-16 text-center">

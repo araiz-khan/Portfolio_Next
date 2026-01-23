@@ -74,7 +74,8 @@
 
   /* Section-scoped backgrounds */
   .projects-section {
-    --projects-bg: hsl(var(--background));
+    /* Matches the provided light-mode color */
+    --projects-bg: #ffffff;
   }
 
   .dark .projects-section {
