@@ -71,6 +71,16 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
   }
+
+  /* Section-scoped backgrounds */
+  .projects-section {
+    --projects-bg: hsl(var(--background));
+  }
+
+  .dark .projects-section {
+    /* Matches the provided deep blue tone for Featured Projects */
+    --projects-bg: #050b1d;
+  }
 }
 
 @layer utilities {

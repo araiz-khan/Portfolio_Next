@@ -4,12 +4,12 @@ import ChromaGrid from '@/components/ChromaGrid';
 import { bentoCardData } from '@/lib/data';
 
 const gradients = [
-  'linear-gradient(145deg, #4F46E5, hsl(var(--background)))',
-  'linear-gradient(210deg, #10B981, hsl(var(--background)))',
-  'linear-gradient(165deg, #F59E0B, hsl(var(--background)))',
-  'linear-gradient(195deg, #EF4444, hsl(var(--background)))',
-  'linear-gradient(225deg, #8B5CF6, hsl(var(--background)))',
-  'linear-gradient(135deg, #06B6D4, hsl(var(--background)))',
+  'linear-gradient(145deg, #4F46E5, var(--projects-bg, hsl(var(--background))))',
+  'linear-gradient(210deg, #10B981, var(--projects-bg, hsl(var(--background))))',
+  'linear-gradient(165deg, #F59E0B, var(--projects-bg, hsl(var(--background))))',
+  'linear-gradient(195deg, #EF4444, var(--projects-bg, hsl(var(--background))))',
+  'linear-gradient(225deg, #8B5CF6, var(--projects-bg, hsl(var(--background))))',
+  'linear-gradient(135deg, #06B6D4, var(--projects-bg, hsl(var(--background))))',
 ];
 
 const borderColors = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4'];
@@ -29,7 +29,10 @@ export default function ProjectsSection() {
 
   return (
     // Replaced bg-secondary with bg-background to avoid blue tint and improved section styling
-    <section id="projects" className="w-full bg-background py-20 md:py-32 transition-colors duration-300">
+    <section
+      id="projects"
+      className="projects-section w-full bg-background py-20 md:py-32 transition-colors duration-300 dark:bg-[var(--projects-bg)]"
+    >
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
