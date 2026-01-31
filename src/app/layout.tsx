@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Inter, Lora } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const fontInter = Inter({
   subsets: ['latin'],
@@ -73,6 +74,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );
